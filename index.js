@@ -1,7 +1,5 @@
 // Declaring Variables
 const starsCollection = $(".container svg");
-const baseColor = "#eeeeee";
-const onHover = "#fcf876";
 
 // Event on Mouse Enter and Mouse Leave
 $(starsCollection)

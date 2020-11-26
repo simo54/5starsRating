@@ -1,18 +1,46 @@
-const start = $("svg");
-const baseColor = "black";
-const onHover = "yellow";
+// Declaring Variables
+const startsCollection = $(".container svg");
+const baseColor = "#eeeeee";
+const onHover = "#fcf876";
 
 $(() => {
-  $(start)
+  $(startsCollection)
     .on("mouseenter", function () {
-      $("path, polygon, circle", this).attr("fill", onHover);
+      let hoveredStar = $(this)[0].id;
+      $(this)
+        .parent()
+        .children("svg")
+        .each(function (event) {
+          event < hoveredStar
+            ? $("path, polygon, circle", this)
+                .addClass("onHover")
+                .removeClass("unHover")
+            : $("path, polygon, circle", this)
+                .addClass("unHover")
+                .removeClass("onHover");
+        });
     })
     .on("mouseleave", function () {
-      $("path, polygon, circle", this).attr("fill", baseColor);
+      $(this)
+        .parent()
+        .children("svg")
+        .each(function () {
+          $("path, polygon, circle", this).removeClass("onHover");
+        });
     });
 });
 
-/**
- * 1. Define Stars icons svg
- * 2. Select all stars and apply an hover attribute where you can change colors when you hover it and reinstate their color when you hover off.
- */
+$(() => {
+  $(startsCollection).on("click", function () {
+    let hoveredStar = $(this)[0].id;
+    let starsToBeFilledIn = $(this).parent().children("svg");
+
+    for (i = 0; i < starsToBeFilledIn.length; i++) {
+      $(starsToBeFilledIn[i]).removeClass("clicked");
+    }
+
+    for (i = 0; i < hoveredStar; i++) {
+      $(starsToBeFilledIn).addClass("clicked");
+    }
+  });
+});

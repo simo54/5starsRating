@@ -1,46 +1,47 @@
 // Declaring Variables
-const startsCollection = $(".container svg");
+const starsCollection = $(".container svg");
 const baseColor = "#eeeeee";
 const onHover = "#fcf876";
 
-$(() => {
-  $(startsCollection)
-    .on("mouseenter", function () {
-      let hoveredStar = $(this)[0].id;
-      $(this)
-        .parent()
-        .children("svg")
-        .each(function (event) {
-          event < hoveredStar
-            ? $("path, polygon, circle", this)
-                .addClass("onHover")
-                .removeClass("unHover")
-            : $("path, polygon, circle", this)
-                .addClass("unHover")
-                .removeClass("onHover");
-        });
-    })
-    .on("mouseleave", function () {
-      $(this)
-        .parent()
-        .children("svg")
-        .each(function () {
-          $("path, polygon, circle", this).removeClass("onHover");
-        });
-    });
-});
-
-$(() => {
-  $(startsCollection).on("click", function () {
-    let hoveredStar = $(this)[0].id;
-    let starsToBeFilledIn = $(this).parent().children("svg");
-
-    for (i = 0; i < starsToBeFilledIn.length; i++) {
-      $(starsToBeFilledIn[i]).removeClass("clicked");
-    }
-
-    for (i = 0; i < hoveredStar; i++) {
-      $(starsToBeFilledIn).addClass("clicked");
-    }
+// Event on Mouse Enter and Mouse Leave
+$(starsCollection)
+  .on("mouseenter", function () {
+    let hoveredStar = $(this)[0].id; // Declaring the star hovered
+    $(this)
+      .parent()
+      .children("svg")
+      .each(function (event) {
+        event < hoveredStar
+          ? $("path, polygon, circle", this)
+              .addClass("onHover")
+              .removeClass("unHover")
+          : $("path, polygon, circle", this)
+              .addClass("unHover")
+              .removeClass("onHover");
+      });
+  })
+  .on("mouseleave", function () {
+    $(this)
+      .parent()
+      .children("svg")
+      .each(function () {
+        $("path, polygon, circle", this).removeClass("onHover");
+      });
   });
+
+// Event on click
+$(starsCollection).on("click", function () {
+  let clickedStar = $(this)[0].id; // Declaring the star clicked
+  let starsToBeFilledIn = $(this).parent().children("svg"); // Targeting remaining stars
+
+  for (i = 0; i < starsToBeFilledIn.length; i++) {
+    $(starsToBeFilledIn).removeClass("clicked");
+  }
+
+  for (i = 0; i < clickedStar; i++) {
+    $(starsToBeFilledIn).addClass("clicked");
+  }
+
+  // Showing id of the star clicked
+  console.log(clickedStar);
 });

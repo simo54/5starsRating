@@ -1,5 +1,6 @@
 svg {
   fill: #eeeeee;
+  cursor: pointer;
 }
 
 .onHover {
@@ -11,5 +12,9 @@ svg {
 }
 
 .clicked {
-  fill: #f8f005;
+  fill: #fcf876;
+}
+
+.container {
+  margin-left: 50px;
 }

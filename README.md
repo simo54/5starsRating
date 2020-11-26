@@ -8,3 +8,10 @@ A simple Jquery project using an SVG icon.
 ## Possible Evolutions
 - 🚧 Animation on click
 - 🚧 Text related to the rating 
+
+## Installation
+
+Once downloaded, please run the following code in your terminal to download all necessary modules from Jquery
+```
+npm install
+```
